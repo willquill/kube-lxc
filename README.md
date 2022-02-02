@@ -1,6 +1,6 @@
-# k8s-cluster
+# kube-lxc
 
-Deployment instructions for creating a kubernetes cluster
+Deployment instructions for creating a kubernetes cluster where one or more nodes are LXC containers in Proxmox
 
 ## Architecture
 
