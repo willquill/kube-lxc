@@ -1,0 +1,19 @@
+---
+#- name: Check SWAP (pre-1/2)
+#  command: /sbin/swapon -s
+#  register: swapon
+#  changed_when: no
+#
+#- name: Disable SWAP since kubernetes can't work with swap enabled (1/2)
+#  ansible.builtin.shell: |
+#    swapoff -a
+
+- name: Disable SWAP since kubernetes can't work with swap enabled (1/2)
+  command: /sbin/swapoff -a
+  when: swapon.stdout
+
+- name: Disable SWAP in fstab since kubernetes can't work with swap enabled (2/2)
+  ansible.builtin.replace:
+    path: /etc/fstab
+    regexp: '^([^#].*?\sswap\s+.*)$'
+    replace: '# \1'

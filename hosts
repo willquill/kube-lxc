@@ -1,0 +1,5 @@
+[k8snodes]
+k8m01 ansible_connection=ssh ansible_user=root
+k8m02 ansible_connection=ssh ansible_user=root
+k8w01 ansible_connection=ssh ansible_user=root
+
